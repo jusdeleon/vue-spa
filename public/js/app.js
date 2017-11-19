@@ -15658,9 +15658,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    methods: {
-        postedOn: function postedOn(status) {
-            return __WEBPACK_IMPORTED_MODULE_0_moment___default()(status.created_at).fromNow();
+    filters: {
+        ago: function ago(date) {
+            return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).fromNow();
         }
     },
     created: function created() {
@@ -15697,7 +15697,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.postedOn(status)))])
+              _c("p", [_vm._v(_vm._s(_vm._f("ago")(status.created_at)))])
             ]),
             _vm._v(" "),
             _c("div", {

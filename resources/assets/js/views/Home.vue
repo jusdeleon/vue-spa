@@ -7,7 +7,7 @@
                         <p>
                             {{ status.user.name }} said...
                         </p>
-                        <p>{{ postedOn(status) }}</p>
+                        <p>{{ status.created_at | ago }}</p>
                     </div>
                     <div class="message-body" v-text="status.body"></div>
                 </div>
@@ -25,9 +25,9 @@
                 statuses: []
             }
         },
-        methods: {
-            postedOn(status) {
-                return moment(status.created_at).fromNow();
+        filters: {
+            ago(date) {
+                return moment(date).fromNow();
             }
         },
         created() {
