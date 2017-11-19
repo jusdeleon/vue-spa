@@ -11,6 +11,7 @@
                     </div>
                     <div class="message-body" v-text="status.body"></div>
                 </div>
+                <add-to-stream @added="addToStream"></add-to-stream>
             </div>
         </div>
     </div>
@@ -18,8 +19,12 @@
 
 <script>
     import moment from 'moment';
+    import AddToStream from '../components/AddToStream';
 
     export default {
+        components: {
+            AddToStream
+        },
         data() {
             return {
                 statuses: []
@@ -28,6 +33,11 @@
         filters: {
             ago(date) {
                 return moment(date).fromNow();
+            }
+        },
+        methods: {
+            addToStream(status) {
+                this.statuses.unshift(status);
             }
         },
         created() {
